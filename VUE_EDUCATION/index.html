@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="container" id="app">
+      <div class="card">
+        <h1>{{title}}</h1>
+        <div class="form-control">
+          <input
+            type="text"
+            :placeholder="placeholderString"
+            v-model="inputValue"
+            @keydown.enter="addNote"
+          />
+          <button class="btn" @click="addNote">Добавить {{inputValue}}</button>
+          <hr />
+          <ul class="list" v-if="notes.length!=0">
+            <li class="list-item" v-for="(myNote,idx) in notes">
+              {{toUpperCase(myNote)}}
+              <button class="btn danger" @click="deleteNote(idx)">
+                Удалить
+              </button>
+            </li>
+            <strong
+              >Общее количество: {{notes.length}} | Двойное количество:
+              {{doubleCount}}</strong
+            >
+          </ul>
+          <div v-else>Нет заметок</div>
+        </div>
+      </div>
+      <hr />
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
