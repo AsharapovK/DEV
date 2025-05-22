@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Как работает Vue</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="container pt-5" id="app" v-cloak>
+      <div class="card center">
+        <!-- <div v-html="myHtml"></div>
+        <h2 v-text="title"></h2>
+        <h2 v-once="title">{{title}}</h2>
+        <h2 v-pre="title">{{title}}</h2> -->
+
+        <ul class="ist" v-if="items.length">
+          <li
+            class="ist-itrm"
+            v-for="(item, index) of eventItems"
+            @click="items.splice(index,1)"
+            :key="item"
+          >
+            <strong>{{item}} </strong>
+            <input type="text" @click.prevent.stop />
+          </li>
+
+          <!-- <li class="list-item" v-for="(value,key) in person">
+            {{key}}:{{value}}
+          </li> -->
+        </ul>
+        <h3 v-show="!items.length">Контента нет</h3>
+
+        <button class="btn" @click="title = 'Hello World'">
+          Изменить название
+        </button>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

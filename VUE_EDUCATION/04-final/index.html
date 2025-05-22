@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Основы Vue</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="container" id="app" v-cloak>
+      <div class="card">
+        <h1>План по изучению Vue.js</h1>
+        <!-- <strong>{{stepIndex}}</strong> -->
+        <div class="steps">
+          <div class="steps-content">{{renderContent(stepIndex)}}</div>
+          <hr />
+          <ul class="steps-list">
+            <li
+              class="steps-item"
+              v-for="(step, idx) in stepsText"
+              :class="{active:idx===stepIndex,done:idx<stepIndex}"
+            >
+              <span>{{idx + 1}}</span>{{step.stepName}}
+            </li>
+          </ul>
+          <hr />
+          <button
+            class="btn"
+            @click="stepClickDown"
+            :disabled="stepIndex===0"
+            v-show="stepIndex<stepsText.length-1"
+          >
+            Назад
+          </button>
+          <button
+            class="btn"
+            @click="stepClickUp"
+            v-if="stepIndex<stepsText.length-1"
+          >
+            Вперед
+          </button>
+          <button class="btn" @click="stepIndex=0" v-else>Завершить</button>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="vue.js"></script>
+  </body>
+</html>
