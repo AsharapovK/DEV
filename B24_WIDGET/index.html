@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bitrix24 Widget</title>
+    <script src="https://api.bitrix24.com/api/v1/"></script>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+
+    <script>
+      window.addEventListener("load", function () {
+        const isInIframe = window !== window.parent;
+        console.log("Открыто во фрейме:", isInIframe);
+
+        if (typeof BX24 === "undefined") {
+          console.error(
+            "BX24 не определён. Скорее всего, приложение не запущено внутри Bitrix24."
+          );
+        } else {
+          console.log("BX24 доступен");
+
+          BX24.init(function () {
+            console.log("BX24 инициализирован");
+
+            setTimeout(function () {
+              BX24.resizeWindow(1200, 1500);
+              console.log("resizeWindow вызван");
+            }, 1000);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
