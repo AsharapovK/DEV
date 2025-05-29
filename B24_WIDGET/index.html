@@ -1,45 +1,70 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <title>Bitrix24 Widget</title>
-    <script src="https://api.bitrix24.com/api/v1/"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B24 Widget</title>
     <style>
       body {
+        font-family: Arial, sans-serif;
         margin: 0;
+        padding: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+      .container {
+        text-align: center;
+        padding: 20px;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
       }
     </style>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div class="container">
+      <h1>Hello World!</h1>
+      <p>This is a Bitrix24 widget example</p>
+    </div>
 
     <script>
-      window.addEventListener("load", function () {
-        const isInIframe = window !== window.parent;
-        console.log("Открыто во фрейме:", isInIframe);
+      // Функция для отправки данных в Google Apps Script
+      function sendToGoogleAppsScript() {
+        const url =
+          "https://script.google.com/macros/s/AKfycbyl5TAcRCK7Z-VWJdT3ieSXJXLjEPvkjNlAqD4km30uUEBmUWmoLyoup5SL-wjrXYml1A/exec";
 
-        if (typeof BX24 === "undefined") {
-          console.error(
-            "BX24 не определён. Скорее всего, приложение не запущено внутри Bitrix24."
-          );
-        } else {
-          console.log("BX24 доступен");
+        // Данные для отправки (можно настроить под ваши нужды)
+        const data = {
+          action: "init",
+          timestamp: new Date().toISOString(),
+          source: "b24_widget",
+        };
 
-          BX24.init(function () {
-            console.log("BX24 инициализирован");
-
-            setTimeout(function () {
-              BX24.resizeWindow(1200, 1500);
-              console.log("resizeWindow вызван");
-            }, 1000);
+        // Отправка POST-запроса
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
           });
-        }
-      });
+      }
+
+      // Вызываем функцию при загрузке страницы
+      document.addEventListener("DOMContentLoaded", sendToGoogleAppsScript);
     </script>
   </body>
 </html>
