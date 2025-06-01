@@ -5,16 +5,18 @@
     <title>Quick start. Local static application</title>
   </head>
   <body>
-    <!-- <div id="name"></div> -->
+    <div id="name"></div>
     <h1>Bitrix24 Widget</h1>
-
-    <!-- <script src="//api.bitrix24.com/api/v1/"></script>
+    <script src="//api.bitrix24.com/api/v1/"></script>
 
     <script>
+      var request = window.location;
+      console.log(`request:`, request);
+
       BX24.init(function () {
         console.log("Bitrix24 SDK loaded");
         BX24.resizeWindow(1500, 1500);
       });
-    </script> -->
+    </script>
   </body>
 </html>

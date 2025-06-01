@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quick start. Local static application</title>
+  </head>
+  <body>
+    <div id="name"></div>
+    <h1>Bitrix24 Widget</h1>
+    <div id="request">
+      <script>
+        var request = window.location.pathname;
+        console.log(`request:`, request);
+        console.log(window);
+      </script>
+    </div>
+    <script src="//api.bitrix24.com/api/v1/"></script>
+    <script>
+      BX24.ready(function () {
+        BX24.init(function () {
+          var placementInfo = BX24.placement.info();
+          console.log(
+            "placement = " +
+              placementInfo["placement"] +
+              ", options = " +
+              JSON.stringify(placementInfo["options"])
+          );
+        });
+      });
+
+      // BX24.init(function () {
+      //   console.log("Bitrix24 SDK loaded");
+      //   BX24.resizeWindow(500, 500);
+      // });
+    </script>
+  </body>
+</html>

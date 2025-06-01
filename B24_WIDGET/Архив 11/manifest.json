@@ -1,0 +1,25 @@
+{
+  "app": {
+    "code": "my_app_unique_code",
+    "name": {
+      "ru": "Мое приложение",
+      "en": "My App"
+    },
+    "description": {
+      "ru": "Приложение для карточки сделки",
+      "en": "App for deal card"
+    }
+  },
+  "placements": [
+    {
+      "placement": "CRM_DEAL_DETAIL_TAB",
+      "handler": "/index.html",
+      "title": {
+        "ru": "Мое приложение",
+        "en": "My App"
+      }
+    }
+  ],
+  "scopes": ["crm"],
+  "version": "1.0"
+}

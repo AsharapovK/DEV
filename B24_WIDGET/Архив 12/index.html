@@ -8,6 +8,22 @@
     <!-- <div id="name"></div> -->
     <h1>Bitrix24 Widget</h1>
 
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+      Имя: <input type="text" name="fname" />
+      <input type="submit" />
+    </form>
+
+    <?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			$name = htmlspecialchars($_REQUEST['fname']); // Получение значения поля 'fname'
+			if (empty($name)) {
+					echo "Имя не указано";
+			} else {
+					echo "Привет, " . $name;
+			}
+	}
+	?>
+
     <!-- <script src="//api.bitrix24.com/api/v1/"></script>
 
     <script>
